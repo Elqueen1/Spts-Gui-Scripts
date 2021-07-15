@@ -1,1 +1,3 @@
 .MouseButton1Down:connect(function()
+	loadstring(game:HttpGet('Paste Link Here'))()
+	end)
