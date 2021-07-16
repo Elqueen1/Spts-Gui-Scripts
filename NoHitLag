@@ -1,0 +1,8 @@
+while wait(.5) do
+		for i, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+			if v.Name == "TouchInterest" then
+				v:Destroy()
+			end
+		end
+	end
+end)
