@@ -1,0 +1,33 @@
+local Imput = game:GetService("UserInputService")
+	Imput.InputBegan:connect(function(inst)
+		if inst.KeyCode == Enum.KeyCode.F1 then
+			_G.on = 1
+			while _G.on == 1
+			do
+				print("Script was made by Fasty")
+				wait(9)
+				local SavePosition = Instance.new("TextLabel")
+				player = game.Players.LocalPlayer.Character.Humanoid
+				player.HealthChanged:Connect(function(hp)
+					if hp <= player.MaxHealth * 0.5 then
+						wait()
+						game.ReplicatedStorage.RemoteEvent:FireServer({"Respawn"})
+						lastlocationx = game.Players.LocalPlayer.Character.HumanoidRootPart.Position.x
+						lastlocationy = game.Players.LocalPlayer.Character.HumanoidRootPart.Position.y
+						lastlocationz = game.Players.LocalPlayer.Character.HumanoidRootPart.Position.z
+						SavePosition.Text = "Last Place: " ..lastlocationx.. "," ..lastlocationy.. "," ..lastlocationz.. ","
+						--print(tostring(SavePosition.Text))
+						--print("Player " ..tostring(game.Players.LocalPlayer.Name).. " Respawn")
+						--print(tostring(SavePosition.Text))
+						wait(1.599)
+						--print("screengui disabled")
+						repeat wait() until game.Players.LocalPlayer.Character.Humanoid
+						--print("Teleporting back to " ..tostring(SavePosition.Text))
+						local FindHum = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(lastlocationx, lastlocationy, lastlocationz)
+					end
+				end)
+			end
+		end
+	end)
+end)
